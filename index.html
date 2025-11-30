@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotional Cue Cards</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <button id="undoBtn" class="icon-btn" aria-label="Undo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M9 14L4 9l5-5"></path>
+            <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+          </svg>
+        </button>
+        <h1>Nomadic Cards</h1>
+        <button id="toggleView" class="icon-btn">☰</button>
+      </header>
+
+      <main id="cardContainer"></main>
+
+      <button id="addBtn">＋</button>
+
+      <!-- Modal -->
+      <div id="addModal" class="modal hidden">
+        <div class="modal-content">
+          <h3>Add Situation</h3>
+          <input
+            type="text"
+            id="newSituation"
+            placeholder="situation (1 sentence)"
+          />
+          <textarea
+            id="newTodo"
+            placeholder="to-do (short paragraph)"
+          ></textarea>
+          <div class="modal-actions">
+            <button id="cancelAdd">Cancel</button>
+            <button id="saveAdd">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then((reg) => console.log("Service Worker registered:", reg))
+            .catch((err) => console.error("SW registration failed:", err));
+        });
+      }
+    </script>
+  </body>
+</html>
